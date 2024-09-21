@@ -13,8 +13,26 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('username')->unique();
+            $table->unsignedTinyInteger('roll', );
+            $table->string('first_name', 100);
+            $table->string('last_name', 100);
+            $table->string('first_name_kana', 100);
+            $table->string('last_name_kana', 100);
+            $table->string('tel1');
+            $table->string('tel2');
+            $table->string('tel3');
             $table->string('email')->unique();
+            $table->unsignedTinyInteger('sex', );
+            $table->string('zip1');
+            $table->string('zip2');
+            $table->string('pref', 100);
+            $table->string('city', 100);
+            $table->string('town', 100);
+            $table->string('profile_pic')->nullable();
+            $table->timestamp('regist_at')->useCurrent();
+            $table->timestamp('update_at')->useCurrent()->useCurrentOnUpdate();
+            $table->boolean('is_deleted')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
